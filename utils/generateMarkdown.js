@@ -18,6 +18,7 @@ function generateMarkdown(data) {
   ${data.description}
 
   ## Table of Contents
+  -[Installation](#installation)
 
   ## Installation
   ${data.installation}
@@ -35,8 +36,8 @@ function generateMarkdown(data) {
   ${data.tests}
 
   ## Questions
-  ${data.username}
-  ${data.email}
+  Check out my work at github.com/${data.username}
+  If you have further questions, you can contact me at ${data.email}
 
 `;
 }
