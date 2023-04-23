@@ -1,7 +1,7 @@
 // TODO: Include packages needed for this application
 const fs = require("fs");
 const inquirer = require("inquirer");
-const generateMarkdown = require("./utils/generateMarkdown.js");
+const genMark = require("./utils/generateMarkdown.js");
 
 // TODO: Create an array of questions for user input
 const questions = [
@@ -98,9 +98,9 @@ function init() {
         message: questions[9],
       },
     ])
-    .then((response) =>
-      writeToFile(response.readmeName, generateMarkdown(response))
-    );
+    .then((response) => {
+      writeToFile(response.readmeName, genMark(response));
+    });
 }
 
 // Function call to initialize app
