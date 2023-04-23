@@ -2,6 +2,7 @@
 const fs = require("fs");
 const inquirer = require("inquirer");
 const generateMarkdown = require("./utils/generateMarkdown.js");
+const { log } = require("console");
 
 // TODO: Create an array of questions for user input
 const questions = [
@@ -11,6 +12,20 @@ const questions = [
   "Enter the usage information",
   "Enter the contribution guidelines",
   "Enter the test instructions",
+  "Choose a license",
+  "Enter your GitHub username",
+  "Enter your email address",
+];
+const storage = [
+  "title",
+  "description",
+  "installation",
+  "usage",
+  "contribution",
+  "tests",
+  "license",
+  "username",
+  "email",
 ];
 
 // TODO: Create a function to write README file
@@ -18,58 +33,60 @@ function writeToFile(fileName, data) {}
 
 // TODO: Create a function to initialize app
 function init() {
-  inquirer.prompt([
-    {
-      type: "input",
-      name: "title",
-      message: questions[0],
-    },
-    {
-      type: "input",
-      name: "description",
-      message: questions[1],
-    },
-    {
-      type: "input",
-      name: "installation",
-      message: questions[2],
-    },
-    {
-      type: "input",
-      name: "usage",
-      message: questions[3],
-    },
-    {
-      type: "input",
-      name: "contribution",
-      message: questions[4],
-    },
-    {
-      type: "input",
-      name: "tests",
-      message: questions[5],
-    },
-    {
-      type: "list",
-      choices: [
-        "Apache License 2.0",
-        "GNU General Public License v3.0",
-        "MIT License",
-      ],
-      name: "license",
-      message: "Choose a license",
-    },
-    {
-      type: "input",
-      name: "username",
-      message: "Enter your GitHub username",
-    },
-    {
-      type: "input",
-      name: "email",
-      message: "Enter your email address",
-    },
-  ]);
+  const response = inquirer
+    .prompt([
+      {
+        type: "input",
+        name: storage[0],
+        message: questions[0],
+      },
+      {
+        type: "input",
+        name: storage[1],
+        message: questions[1],
+      },
+      {
+        type: "input",
+        name: storage[2],
+        message: questions[2],
+      },
+      {
+        type: "input",
+        name: storage[3],
+        message: questions[3],
+      },
+      {
+        type: "input",
+        name: storage[4],
+        message: questions[4],
+      },
+      {
+        type: "input",
+        name: storage[5],
+        message: questions[5],
+      },
+      {
+        type: "list",
+        choices: [
+          "Apache License 2.0",
+          "GNU General Public License v3.0",
+          "MIT License",
+        ],
+        name: storage[6],
+        message: questions[6],
+      },
+      {
+        type: "input",
+        name: storage[7],
+        message: questions[7],
+      },
+      {
+        type: "input",
+        name: storage[8],
+        message: questions[8],
+      },
+    ])
+    .then((response) => console.log(generateMarkdown(response)));
 }
 
 // Function call to initialize app
