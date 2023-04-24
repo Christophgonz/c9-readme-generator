@@ -1,7 +1,7 @@
-// TODO: Create a function that returns a license badge based on which license is passed in
-// If there is no license, return an empty string
+// function that returns a license badge based on which license is passed in
 function renderLicenseBadge(license) {
   let licenseBadge = "";
+  // If there is no license, return an empty string
   if (!license) return licenseBadge;
 
   switch (license) {
@@ -20,13 +20,14 @@ function renderLicenseBadge(license) {
     default:
       break;
   }
+  // return the badge depending on the license put through
   return licenseBadge;
 }
 
-// TODO: Create a function that returns the license link
-// If there is no license, return an empty string
+// function that returns the license link
 function renderLicenseLink(license) {
   let licenseLink = "";
+  // If there is no license, return an empty string
   if (!license) return licenseLink;
   switch (license) {
     case "Apache License 2.0":
@@ -41,23 +42,29 @@ function renderLicenseLink(license) {
     default:
       break;
   }
+  // return the link to the license
   return licenseLink;
 }
 
-// TODO: Create a function that returns the license section of README
-// If there is no license, return an empty string
+// function that returns the license section of README
 function renderLicenseSection(license) {
   let licenseSection = "";
+  // If there is no license, return an empty string
   if (!license) return licenseSection;
   licenseSection = "This project is licensed under the terms of the " + license;
+  // call to get the link to the license
   licenseSection += renderLicenseLink(license);
+  // call to get the badge for the license
   licenseSection += renderLicenseBadge(license);
+  // return the license section
   return licenseSection;
 }
 
-// TODO: Create a function to generate markdown for README
+// The function that creates what goes into the input
 function generateMarkdown(data) {
+  // get the license section
   const license = renderLicenseSection(data.license);
+  // the output that takes in the user input and outputs it into a markdown file
   return `# ${data.title}
 
   ## Description
@@ -93,4 +100,5 @@ function generateMarkdown(data) {
 `;
 }
 
+// export the function generateMarkdown
 module.exports = generateMarkdown;

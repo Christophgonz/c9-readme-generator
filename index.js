@@ -1,9 +1,11 @@
-// TODO: Include packages needed for this application
+// Required for writing the output file
 const fs = require("fs");
+// Required to prompt the user
 const inquirer = require("inquirer");
-const genMark = require("./utils/generateMarkdown.js");
+// required to take the user responses and make the file to be output
+const generateMarkdown = require("./utils/generateMarkdown.js");
 
-// TODO: Create an array of questions for user input
+// The questions the prompt will ask the user
 const questions = [
   "What is the title of your project",
   "Enter a description of your project",
@@ -16,6 +18,7 @@ const questions = [
   "Enter your email address",
   "What would you like to title your readme?",
 ];
+// The variable names the responses will be stored under
 const storage = [
   "title",
   "description",
@@ -29,18 +32,20 @@ const storage = [
   "readmeName",
 ];
 
-// TODO: Create a function to write README file
+// The function that takes the output generated from generateMarkdown and writes it to the file that the user specifies
 function writeToFile(fileName, data) {
   fs.writeFile("./testFiles/" + fileName, data, (err) =>
     err
-      ? console.err(err)
-      : console.log("Your file " + fileName + " has been generated")
+      ? // If there is an error log out the error
+        console.err(err)
+      : // Else, let the user know the file has been generated
+        console.log("Your file " + fileName + " has been generated")
   );
 }
 
-// TODO: Create a function to initialize app
 function init() {
   const response = inquirer
+    // Prompt the user for their input for what they want in their readme
     .prompt([
       {
         type: "input",
@@ -98,8 +103,10 @@ function init() {
         message: questions[9],
       },
     ])
+    // After getting input call generateMarkdown, feeding the in what the user answered
+    // then call writeToFile using the user input for the name
     .then((response) => {
-      writeToFile(response.readmeName, genMark(response));
+      writeToFile(response.readmeName, generateMarkdown(response));
     });
 }
 
