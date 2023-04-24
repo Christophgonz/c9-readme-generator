@@ -3,6 +3,23 @@
 function renderLicenseBadge(license) {
   let licenseBadge = "";
   if (!license) return licenseBadge;
+
+  switch (license) {
+    case "Apache License 2.0":
+      licenseBadge =
+        "[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)";
+      break;
+    case "GNU General Public License v3.0":
+      licenseBadge =
+        "[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)";
+      break;
+    case "MIT License":
+      licenseBadge =
+        "[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)";
+      break;
+    default:
+      break;
+  }
   return licenseBadge;
 }
 
@@ -11,6 +28,19 @@ function renderLicenseBadge(license) {
 function renderLicenseLink(license) {
   let licenseLink = "";
   if (!license) return licenseLink;
+  switch (license) {
+    case "Apache License 2.0":
+      licenseLink = "https://www.apache.org/licenses/LICENSE-2.0.txt";
+      break;
+    case "GNU General Public License v3.0":
+      licenseLink = "https://www.gnu.org/licenses/gpl-3.0.txt";
+      break;
+    case "MIT License":
+      licenseLink = "https://www.mit.edu/~amini/LICENSE.md";
+      break;
+    default:
+      break;
+  }
   return licenseLink;
 }
 
@@ -19,6 +49,7 @@ function renderLicenseLink(license) {
 function renderLicenseSection(license) {
   let licenseSection = "";
   if (!license) return licenseSection;
+  licenseSection = "This project is licensed under the terms of the " + license;
   licenseSection += renderLicenseLink(license);
   licenseSection += renderLicenseBadge(license);
   return licenseSection;
