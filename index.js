@@ -39,7 +39,7 @@ function writeToFile(fileName, data) {
       ? // If there is an error log out the error
         console.err(err)
       : // Else, let the user know the file has been generated
-        console.log("Your file " + fileName + " has been generated")
+        console.log("Your file has been generated at ./testFiles/" + fileName)
   );
 }
 
