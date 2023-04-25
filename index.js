@@ -44,8 +44,8 @@ function writeToFile(fileName, data) {
 }
 
 function init() {
-  const response = inquirer
-    // Prompt the user for their input for what they want in their readme
+  // Prompt the user for their input for what they want in their readme
+  inquirer
     .prompt([
       {
         type: "input",
