@@ -94,7 +94,7 @@ function generateMarkdown(data) {
   ${data.tests}
 
   ## Questions
-  Check out my work at github.com/${data.username}\n
+  Check out my work at https://github.com/${data.username}\n
   If you have further questions, you can contact me at ${data.email}
 
 `;
